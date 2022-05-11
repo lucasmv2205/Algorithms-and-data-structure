@@ -1,7 +1,7 @@
 # algorithms-and-data-structure
 
-###exercises
+### exercises
 pasta com arquivos de exercicios de treinamento
 
-###programs
+### programs
 pasta com trabalhos de laboratórios para serem entregues
