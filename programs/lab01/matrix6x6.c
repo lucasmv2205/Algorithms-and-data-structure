@@ -15,9 +15,9 @@ int main()
   {
     for (j = 0; j < 6; j++)
     {
-      mat[i][j] = 1;
-      // printf("\nDigite o valor para matriz[%d][%d]: ", i + 1, j + 1);
-      // scanf("%d", &mat[i][j]);
+      // mat[i][j] = 1;
+      printf("\nDigite o valor para matriz[%d][%d]: ", i + 1, j + 1);
+      scanf("%d", &mat[i][j]);
     }
   }
   printf("\n");
