@@ -1,9 +1,7 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-#include <term.h>
-
+#include <locale.h>
 struct Endereco
 {
   char rua[30], bairro[30], complemento[50], cidade[30], estado[30], pais[30];
@@ -52,7 +50,7 @@ void mostraString(char *string)
 
 void mostraStruct(Contact *c)
 {
-  printf("\nContato encontrado:");
+  printf("\n");
   printf("\nNome:");
   mostraString(c->nome);
   printf("\nAniversario:");
@@ -175,7 +173,7 @@ void searchByBirthDayAndMonth(Contact *c, int tam)
   }
 }
 
-void imprimeAgendaNomeTelefoneEmail(Contact *c, int tam)
+void showNomeTelefoneEmail(Contact *c, int tam)
 {
   for (int i = 0; i < tam; i++)
   {
@@ -189,7 +187,7 @@ void imprimeAgendaNomeTelefoneEmail(Contact *c, int tam)
   }
 }
 
-void imprimeAgenda(Contact *c, int tam)
+void showAllContacts(Contact *c, int tam)
 {
   for (int i = 0; i < tam; i++)
   {
@@ -197,90 +195,117 @@ void imprimeAgenda(Contact *c, int tam)
   }
 }
 
+void alfabeticOrder(Contact vet_contact[], int n_contact)
+{
+  Contact aux;
+  int i, j, y = 0;
+  for (y = n_contact; y >= 0; y--)
+    for (i = 0; i < n_contact - 1; i++)
+      for (j = i + 1; j < n_contact; j++)
+      {
+        if (vet_contact[i].nome[y] > vet_contact[j].nome[y])
+        {
+          aux = vet_contact[i];
+          vet_contact[i] = vet_contact[j];
+          vet_contact[j] = aux;
+        }
+      }
+}
+
+void createContact(Contact vet_contato[], int indice)
+{
+  printf("\n\nNome: ");
+  fflush(stdin);
+  gets(vet_contato[indice].nome);
+  printf("\nAniversario: ");
+  printf("\nDia: ");
+  scanf("%d", &vet_contato[indice].aniversario.dia);
+  printf("\nMes: ");
+  fflush(stdin);
+  gets(vet_contato[indice].aniversario.mes);
+  printf("\nAno: ");
+  scanf("%d", &vet_contato[indice].aniversario.ano);
+  printf("\nEmail: ");
+  fflush(stdin);
+  gets(vet_contato[indice].email);
+  printf("\nObservacao: ");
+  fflush(stdin);
+  gets(vet_contato[indice].observacao);
+  printf("\nDDD: ");
+  scanf("%d", &vet_contato[indice].telefone.ddd);
+  printf("\nNumero: ");
+  scanf("%d", &vet_contato[indice].telefone.numero);
+  printf("\nEndereco");
+  printf("\nRua: ");
+  fflush(stdin);
+  gets(vet_contato[indice].endereco.rua);
+  printf("\nNumero: ");
+  scanf("%d", &vet_contato[indice].endereco.numero);
+  printf("\nBairro: ");
+  fflush(stdin);
+  gets(vet_contato[indice].endereco.bairro);
+  printf("\nComplemento: ");
+  fflush(stdin);
+  gets(vet_contato[indice].endereco.complemento);
+  printf("\nCidade: ");
+  fflush(stdin);
+  gets(vet_contato[indice].endereco.cidade);
+  printf("\nEstado: ");
+  fflush(stdin);
+  gets(vet_contato[indice].endereco.estado);
+  printf("\nPais: ");
+  fflush(stdin);
+  gets(vet_contato[indice].endereco.pais);
+  printf("\nCep: ");
+  scanf("%d", &vet_contato[indice].endereco.cep);
+  alfabeticOrder(vet_contato, indice);
+}
+
+int deleteContact(Contact vetor_contato[], int contador, char nome[])
+{
+
+  int aux = 0, indice_pessoa, op;
+  for (int i = 0; i < contador; i++)
+  {
+    if (strcmp(nome, vetor_contato[i].nome) == 0)
+    {
+      aux = 1;
+      indice_pessoa = i;
+      printf("\nNome: ");
+      mostraString(vetor_contato[i].nome);
+      printf("\nE-mail: ");
+      mostraString(vetor_contato[i].email);
+      printf("\n");
+    }
+  }
+  if (aux == 1)
+  {
+    printf("\n\nDeseja mesmo excluir o contado? 1 para SIM ou 2 para NAO: ");
+    scanf("%d", &op);
+    if (op == 1)
+    {
+      for (int i = indice_pessoa; i < contador; i++)
+        vetor_contato[i] = vetor_contato[i + 1];
+      return contador - 1;
+    }
+  }
+  else
+  {
+    printf("\nPessoa não registrada.");
+  }
+  return contador;
+}
+
 int main()
 {
   Contact agenda[100];
   Contact teste;
-  int opcao;
-  char nomeBusca[40], mesBusca[30];
-  int diaBusca;
-  strcpy(agenda[0].nome, "Lucas");
-  strcpy(agenda[0].email, "lmartins@gmail");
-  strcpy(agenda[0].observacao, "obs do lucas");
-  agenda[0].aniversario.dia = 22;
-  agenda[0].aniversario.ano = 1999;
-  strcpy(agenda[0].aniversario.mes, "maio");
-  agenda[0].telefone.ddd = 62;
-  agenda[0].telefone.numero = 24242;
-  strcpy(agenda[0].endereco.rua, "joao pereira da silva");
-  strcpy(agenda[0].endereco.bairro, "saraiva");
-  strcpy(agenda[0].endereco.complemento, "complemento end");
-  strcpy(agenda[0].endereco.cidade, "uberlandia");
-  strcpy(agenda[0].endereco.estado, "minas gerais");
-  strcpy(agenda[0].endereco.pais, "Brasil");
-  agenda[0].endereco.numero = 163;
-  agenda[0].endereco.cep = 308;
-
-  strcpy(agenda[1].nome, "Lucas martins");
-  strcpy(agenda[1].email, "lucas@gmail");
-  strcpy(agenda[1].observacao, "obs do lucas martins");
-  agenda[1].aniversario.dia = 22;
-  agenda[1].aniversario.ano = 1999;
-  strcpy(agenda[1].aniversario.mes, "junho");
-  agenda[1].telefone.ddd = 62;
-  agenda[1].telefone.numero = 24242;
-  strcpy(agenda[1].endereco.rua, "joao pereira da silva");
-  strcpy(agenda[1].endereco.bairro, "saraiva");
-  strcpy(agenda[1].endereco.complemento, "complemento end");
-  strcpy(agenda[1].endereco.cidade, "uberlandia");
-  strcpy(agenda[1].endereco.estado, "minas gerais");
-  strcpy(agenda[1].endereco.pais, "Brasil");
-  agenda[1].endereco.numero = 163;
-  agenda[1].endereco.cep = 3408;
-
-  strcpy(agenda[2].nome, "Millena");
-  strcpy(agenda[2].email, "millena@gmail");
-  strcpy(agenda[2].observacao, "obs da millena");
-  agenda[2].aniversario.dia = 12;
-  agenda[2].aniversario.ano = 2000;
-  strcpy(agenda[2].aniversario.mes, "maio");
-  agenda[2].telefone.ddd = 62;
-  agenda[2].telefone.numero = 24242;
-  strcpy(agenda[2].endereco.rua, "joao pereira da silva");
-  strcpy(agenda[2].endereco.bairro, "saraiva");
-  strcpy(agenda[2].endereco.complemento, "complemento end");
-  strcpy(agenda[2].endereco.cidade, "uberlandia");
-  strcpy(agenda[2].endereco.estado, "minas gerais");
-  strcpy(agenda[2].endereco.pais, "Brasil");
-  agenda[2].endereco.numero = 163;
-  agenda[2].endereco.cep = 3048;
-
-  strcpy(agenda[3].nome, "Millena gena");
-  strcpy(agenda[3].email, "millena@gmail");
-  strcpy(agenda[3].observacao, "obs da millena");
-  agenda[3].aniversario.dia = 22;
-  agenda[3].aniversario.ano = 2000;
-  strcpy(agenda[3].aniversario.mes, "maio");
-  agenda[3].telefone.ddd = 62;
-  agenda[3].telefone.numero = 24242;
-  strcpy(agenda[3].endereco.rua, "joao pereira da silva");
-  strcpy(agenda[3].endereco.bairro, "saraiva");
-  strcpy(agenda[3].endereco.complemento, "complemento end");
-  strcpy(agenda[3].endereco.cidade, "uberlandia");
-  strcpy(agenda[3].endereco.estado, "minas gerais");
-  strcpy(agenda[3].endereco.pais, "Brasil");
-  agenda[3].endereco.numero = 163;
-  agenda[3].endereco.cep = 3048;
-
-  // searchByName(agenda, 4);
-  // searchByBirthMonth(agenda, "maio", 4);
-  // searchByBirthDayAndMonth(agenda, "maio", 22, 4);
-  // imprimeAgendaNomeTelefoneEmail(agenda, 4);
-  // imprimeAgenda(agenda, 4);
+  int opcao, contador = 0;
+  char nome_retirar[50];
 
   do
   {
-    printf("Escolha uma opcao:\n\n 1 - Buscar por primeiro nome.\n 2 - Buscar por mes de aniversario.");
+    printf("\nEscolha uma opcao:\n\n 1 - Buscar por primeiro nome.\n 2 - Buscar por mes de aniversario.");
     printf("\n 3 - Buscar por mes e dia de aniversario.\n 4 - Listar nome, email e telefone dos contatos.\n 5 - Listar todos contatos cadastrados na agenda.");
     printf("\n 6 - Inserir novo contato.\n 7 - Excluir contato.");
     printf("\n8 - Sair do programa.\n\nDigite: ");
@@ -288,34 +313,40 @@ int main()
     switch (opcao)
     {
     case 1:
-      searchByName(agenda, 4);
+      searchByName(agenda, contador);
       break;
     case 2:
 
-      searchByBirthMonth(agenda, 4);
+      searchByBirthMonth(agenda, contador);
       break;
     case 3:
-      searchByBirthDayAndMonth(agenda, 4);
+      searchByBirthDayAndMonth(agenda, contador);
       break;
     case 4:
       printf("\nNome, E-mail e telefone dos contatos cadastrados:\n");
-      imprimeAgendaNomeTelefoneEmail(agenda, 4);
+      alfabeticOrder(agenda, contador);
+      showNomeTelefoneEmail(agenda, contador);
       break;
     case 5:
       printf("\nContatos cadastrados");
-      imprimeAgenda(agenda, 4);
+      alfabeticOrder(agenda, contador);
+      showAllContacts(agenda, contador);
       break;
     case 6:
-
+      createContact(agenda, contador);
+      contador++;
       break;
     case 7:
-
+      printf("\n");
+      printf("Informe o nome da pessoa a ser excluida: ");
+      fflush(stdin);
+      gets(nome_retirar);
+      contador = deleteContact(agenda, contador, nome_retirar);
       break;
     default:
       if (opcao != 8)
       {
         printf("\n\nOpcao invalida.");
-        // getc();
       }
     }
   } while (opcao != 8);
