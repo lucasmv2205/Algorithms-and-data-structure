@@ -1,1 +1,1 @@
-Nome
+vet_contact[j].nome[y]

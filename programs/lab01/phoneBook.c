@@ -203,7 +203,7 @@ void alfabeticOrder(Contact vet_contact[], int n_contact)
     for (i = 0; i < n_contact - 1; i++)
       for (j = i + 1; j < n_contact; j++)
       {
-        if (vet_contact[i].nome[y] > vet_contact[j].nome[y])
+        if (toUpperCase(vet_contact[i].nome[y]) > toUpperCase(vet_contact[j].nome[y]))
         {
           aux = vet_contact[i];
           vet_contact[i] = vet_contact[j];
