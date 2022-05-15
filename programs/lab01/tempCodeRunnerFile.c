@@ -1,1 +1,12 @@
-mat[5][0] - mat[4][1] - mat[3][2];
+void ClearScreen()
+// {
+//   if (!cur_term)
+//   {
+//     int result;
+//     setupterm(NULL, STDOUT_FILENO, &result);
+//     if (result <= 0)
+//       return;
+//   }
+
+//   putp(tigetstr("clear"));
+// }
