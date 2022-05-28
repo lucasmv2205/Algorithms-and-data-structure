@@ -1,1 +1,1 @@
-numero_aleatorio
+2

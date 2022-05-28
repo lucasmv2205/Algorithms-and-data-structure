@@ -38,7 +38,7 @@ void roleta(populacao *pop, int qtd_ind)
     soma_apt_rel = 0;
     sorteio = numero_aleatorio(1);
     printf("\n================");
-    printf("\nsorteio: %f\n", sorteio);
+    printf("\nsorteio: %f", sorteio);
     for (int i = 0; i < qtd_ind; i++)
     {
       soma_apt_rel = soma_apt_rel + pop->pop[i].aptidao_relativa;
