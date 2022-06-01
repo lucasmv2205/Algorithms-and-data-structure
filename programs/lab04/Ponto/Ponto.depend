@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1653951951 source:c:\users\facom.facom\downloads\ponto.c
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+	"Ponto.h"
+
+1653950811 c:\users\facom.facom\downloads\ponto.h
+
+1653953925 source:c:\users\facom.facom\downloads\principal.c
+	<stdio.h>
+	<stdlib.h>
+	"Ponto.h"
+
