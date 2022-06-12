@@ -38,10 +38,10 @@ int insere_elemento(Lista *lst, int elemento);
 // Pos-condicao: lista de entrada com um elemento a menos
 int remove_elemento(Lista *lst, int elemento);
 
-// Entradas: endereco da lista e elemento desejado
+// Entradas: endereco da lista e posicao do elemento desejado
 // Pre-condicao: lista ser valida e nao estar vazia
-// Processo: percorrer a lista ate encontrar o elemento desejado. Se elemento existir, printar elemento.
-// Saida: nenhuma
+// Processo: percorrer a lista ate encontrar o elemento desejado. Se elemento existir, retornar elemento.
+// Saida: elemento desejado se sucesso ou 0 se falha
 // Pos-condicao: nenhuma
 int obtem_valor_elemento(Lista *lst, int pos_elemento);
 
