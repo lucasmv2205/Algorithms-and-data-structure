@@ -1,4 +1,4 @@
-// Nome: ListaNaoOrdenada
+// Nome: ListaRegistro
 // Dados: nome(char), volume(inteiro)[ml], preco(float)
 // Lista das operações: inicializa_lista, lista_vazia, lista_cheia, insere_elemento, remove_ultimo, libera_lista, imprime_tabela
 typedef struct lista Lista;
