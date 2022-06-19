@@ -11,7 +11,7 @@ int main()
   {
     do
     {
-      printf("\n --- LISTAS ESTATICAS SEQUENCIAIS --- \n\n");
+      printf("\n --- LISTAS DINAMICA ENCADEADA --- \n\n");
       printf(" Escolha uma opcao\n");
       printf(" 1. Criar lista\n");
       printf(" 2. Verificar lista vazia\n");
