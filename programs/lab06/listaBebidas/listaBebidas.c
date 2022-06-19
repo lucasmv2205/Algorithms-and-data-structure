@@ -90,7 +90,7 @@ int remove_ultimo(Lista *lst)
   return 1;
 }
 
-void imprime_lista(Lista *lst)
+void imprime_lista(Lista lst)
 {
   if (lista_vazia(lst) == 1)
   {
@@ -98,11 +98,11 @@ void imprime_lista(Lista *lst)
   }
   else
   {
-    while ((*lst)->prox != NULL)
+    for (lst; lst != NULL; lst = lst->prox)
     {
-      printf("\n%s", (*lst)->Registro.nome);
-      printf("\n%f", (*lst)->Registro.preco);
-      printf("\n%d", (*lst)->Registro.volume);
+      printf("\n%s", (*lst).Registro.nome);
+      printf("\n%f", (*lst).Registro.preco);
+      printf("\n%d", (*lst).Registro.volume);
     }
   }
 }

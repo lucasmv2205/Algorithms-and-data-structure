@@ -14,7 +14,7 @@ Lista inicializa_lista()
   return NULL;
 }
 
-int lista_vazia(Lista *lst)
+int lista_vazia(Lista lst)
 {
   if (lst == NULL)
   {
@@ -45,6 +45,7 @@ int insere_ord(Lista *lst, int elemento)
   {
     return 0; // Falha: Nó nao alocado
   }
+  N->info = elemento;
   if (lista_vazia(*lst) == 1 || elemento <= (*lst)->info)
   {
     N->prox = *lst;
@@ -89,29 +90,24 @@ int remove_ord(Lista *lst, int elemento)
   return 1;
 }
 
-int obtem_valor_elemento(Lista *lst, int pos_elemento)
+int obtem_valor_elemento(Lista lst, int pos_elemento)
 {
+  int cont = 0;
   if (lista_vazia(lst) == 1)
   {
     return 0; // falha
   }
-  Lista aux = *lst;
-  if (pos_elemento == (*lst)->info)
+  for (lst; lst != NULL; lst = lst->prox)
   {
-    *lst = aux->prox;
-    free(aux);
-    return 1;
+    if (cont == pos_elemento)
+    {
+      return (*lst).info;
+    }
+    cont++;
   }
-
-  while (aux->prox != NULL && aux->prox != pos_elemento)
-  {
-    aux = aux->prox;
-  }
-
-  return aux->prox->info;
 }
 
-void imprime_lista(Lista *lst)
+void imprime_lista(Lista lst)
 {
   if (lista_vazia(lst) == 1)
   {
@@ -119,9 +115,9 @@ void imprime_lista(Lista *lst)
   }
   else
   {
-    while ((*lst)->prox != NULL)
+    for (lst; lst != NULL; lst = lst->prox)
     {
-      printf("\n%d", (*lst)->info);
+      printf("\n%d", (*lst).info);
     }
   }
 }

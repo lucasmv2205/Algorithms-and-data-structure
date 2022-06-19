@@ -50,4 +50,4 @@ void libera_lista(Lista **lst);
 // Processo: percorrer a lista e printar cada elemento.
 // Saida: nenhuma
 // Pos-condicao: nenhuma
-void imprime_lista(Lista *lst);
+void imprime_lista(Lista lst);

@@ -86,7 +86,7 @@ int main()
       printf("\n\n Qual elemento deseja remover: ");
       int elem2;
       scanf("%d", &elem2);
-      int flag4 = remove_ord(lst, elem2);
+      int flag4 = remove_ord(&lst, elem2);
       if (flag4 == 1)
       {
         printf("\n Elemento removido com sucesso");
@@ -112,7 +112,7 @@ int main()
 
     case 8:
       printf("\n\n Imprimir lista");
-      imprime_lista(&lst);
+      imprime_lista(lst);
       break;
 
     default:

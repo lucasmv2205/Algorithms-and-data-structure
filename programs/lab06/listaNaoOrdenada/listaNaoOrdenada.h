@@ -43,7 +43,7 @@ int remove_elemento(Lista *lst, int elemento);
 // Processo: percorrer a lista ate encontrar o elemento desejado. Se elemento existir, retornar elemento.
 // Saida: elemento desejado se sucesso ou 0 se falha
 // Pos-condicao: nenhuma
-int obtem_valor_elemento(Lista *lst, int pos_elemento);
+int obtem_valor_elemento(Lista lst, int pos_elemento);
 
 // Entradas: endereco de memoria do endereco de memoria de uma Lista
 // Pre-condicao: nenhuma
@@ -57,4 +57,4 @@ void libera_lista(Lista **lst);
 // Processo: percorrer a lista e printar cada elemento.
 // Saida: nenhuma
 // Pos-condicao: nenhuma
-void imprime_lista(Lista *lst);
+void imprime_lista(Lista lst);

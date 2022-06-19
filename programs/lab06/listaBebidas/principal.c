@@ -90,7 +90,7 @@ int main()
 
     case 5:
       printf("\n\n Remover ultimo elemento ");
-      int flag4 = remove_ultimo(lst);
+      int flag4 = remove_ultimo(&lst);
       if (flag4 == 1)
       {
         printf("\n Elemento removido com sucesso");
@@ -108,7 +108,7 @@ int main()
 
     case 8:
       printf("\n\n Imprimir lista");
-      imprime_lista(&lst);
+      imprime_lista(lst);
       break;
 
     default:
