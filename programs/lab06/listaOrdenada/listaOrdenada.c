@@ -45,15 +45,25 @@ int insere_ord(Lista *lst, int elemento)
   {
     return 0; // Falha: Nó nao alocado
   }
-  N->info = elemento;
-  N->prox = *lst;
-  *lst = N;
+  if (lista_vazia(*lst) == 1 || elemento <= (*lst)->info)
+  {
+    N->prox = *lst;
+    *lst = N;
+    return 1;
+  }
+  Lista aux = *lst;
+  while (aux->prox != NULL && aux->prox->info < elemento)
+  {
+    aux = aux->prox;
+  }
+  N->prox = aux->prox;
+  aux->prox = N;
   return 1;
 }
 
 int remove_ord(Lista *lst, int elemento)
 {
-  if (lista_vazia(lst) == 1)
+  if (lista_vazia(lst) == 1 || elemento < (*lst)->info)
   {
     return 0; // falha
   }
@@ -65,11 +75,11 @@ int remove_ord(Lista *lst, int elemento)
     return 1;
   }
 
-  while (aux->prox != NULL && aux->prox->info != elemento)
+  while (aux->prox != NULL && aux->prox->info < elemento)
   {
     aux = aux->prox;
   }
-  if (aux->prox == NULL)
+  if (aux->prox == NULL || aux->prox->info > elemento)
   {
     return 0;
   }

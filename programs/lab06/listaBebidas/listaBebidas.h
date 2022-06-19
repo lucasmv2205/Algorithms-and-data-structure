@@ -36,7 +36,7 @@ int insere_elemento(Lista *lst, char *nome, int volume, float preco);
 // Processo: percorrer a lista ate encontrar elemento desejado ou chegar ao seu final. Se o elemento existe, remove ele da lista.
 // Saida: 1 se sucesso ou 0 se falha
 // Pos-condicao: lista de entrada com um elemento a menos
-int remove_ultimo(Lista *lst, int elemento);
+int remove_ultimo(Lista *lst);
 
 // Entradas: endereco de memoria do endereco de memoria de uma Lista
 // Pre-condicao: nenhuma
