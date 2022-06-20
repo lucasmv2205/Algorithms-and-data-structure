@@ -15,7 +15,6 @@ int main()
       printf(" Escolha uma opcao\n");
       printf(" 1. Criar lista\n");
       printf(" 2. Verificar lista vazia\n");
-      printf(" 3. Verificar lista cheia\n");
       printf(" 4. Inserir elemento\n");
       printf(" 5. Remover elemento\n");
       printf(" 6. Liberar lista\n");
@@ -49,20 +48,6 @@ int main()
       if (flag == 0)
       {
         printf("\nLista nao vazia");
-      }
-      break;
-
-    case 3:
-      printf("\n\n Ver se lista esta cheia");
-      // int flag2 = lista_cheia(lst);
-      int flag2 = 0;
-      if (flag2 == 1)
-      {
-        printf("\nLista cheia");
-      }
-      if (flag2 == 0)
-      {
-        printf("\nLista nao cheia");
       }
       break;
 
