@@ -55,12 +55,12 @@ int insere_ord(Lista *lst, int elemento)
     return 0; // Falha: Nó nao alocado
   }
   N->info = elemento;
-  if (lista_vazia(*lst) || elemento <= (*lst)->info)
-  {
-    N->prox = *lst;
-    *lst = N;
-    return 1;
-  }
+  // if (lista_vazia(*lst) || elemento <= (*lst)->info)
+  // {
+  //   N->prox = *lst;
+  //   *lst = N;
+  //   return 1;
+  // }
   Lista aux = *lst;
   while (aux->prox != NULL && aux->prox->info < elemento)
     aux = aux->prox;
@@ -94,35 +94,39 @@ int remove_ord(Lista *lst, int elemento)
   return 1;
 }
 
-int obtem_valor_elemento(Lista *lst, int pos_elemento)
+int obtem_valor_elemento(Lista lst, int pos_elemento)
 {
+  if (lista_vazia(&lst))
+  {
+    return 9999;
+  }
   int cont = 0;
-  *lst = (*lst)->prox;
-  if (lista_vazia(*lst) == 1)
+  lst = lst->prox;
+  if (lista_vazia(lst) == 1)
   {
     return 0; // falha
   }
-  for (*lst; *lst != NULL; lst = (*lst)->prox)
+  for (lst; lst != NULL; lst = lst->prox)
   {
     if (cont == pos_elemento)
     {
-      return (*lst)->info;
+      return lst->info;
     }
     cont++;
   }
 }
 
-void imprime_lista(Lista *lst)
+void imprime_lista(Lista lst)
 {
-  if (lista_vazia(*lst) || (*lst) == NULL)
+  if (lista_vazia(&lst))
   {
     printf("\nLista vazia");
   }
-  *lst = (*lst)->prox;
+  lst = lst->prox;
   printf("\n");
-  for (*lst; *lst != NULL; *lst = (*lst)->prox)
+  for (lst; lst != NULL; lst = lst->prox)
   {
-    printf("%d\t", (*lst)->info);
+    printf("%d\t", lst->info);
   }
 }
 

@@ -93,13 +93,13 @@ int main()
       printf("\n\n Qual posicao do elemento que deseja: ");
       int pos;
       scanf("%d", &pos);
-      int elemento_desejado = obtem_valor_elemento(&lst, pos);
+      int elemento_desejado = obtem_valor_elemento(lst, pos);
       printf("elemento desejado: %d", elemento_desejado);
       break;
 
     case 8:
       printf("\n\n Imprimir lista");
-      imprime_lista(&lst);
+      imprime_lista(lst);
       break;
 
     default:
