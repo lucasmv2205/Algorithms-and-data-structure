@@ -1,12 +1,12 @@
 // Nome: ListaNaoOrdenada
 // Dados: numeros inteiros
-// Lista das operações: inicializa_lista, lista_vazia, lista_cheia, insere_elemento, remove_elemento, obtem_valor_elemento, libera_lista, imprime_lista
+// Lista das operaï¿½ï¿½es: inicializa_lista, lista_vazia, lista_cheia, insere_elemento, remove_elemento, obtem_valor_elemento, libera_lista, imprime_lista
 typedef struct no *Lista;
 
 // Entradas: nenhuma
 // Pre-condicao: nenhuma
 // Processo: criar uma Lista sem valores definidos e aloca espaco na memoria
-// Saida: endereço de uma Lista criada
+// Saida: endereï¿½o de uma Lista criada
 // Pos-condicao: nenhuma
 Lista cria_lista();
 
@@ -51,4 +51,3 @@ void libera_lista(Lista **lst);
 // Saida: nenhuma
 // Pos-condicao: nenhuma
 void imprime_lista(Lista lst);
-

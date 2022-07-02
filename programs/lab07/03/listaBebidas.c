@@ -7,6 +7,7 @@ struct registro
 {
   char nome[20];
   int volume;
+  int info;
   float preco;
 };
 typedef struct registro Registro;
@@ -15,7 +16,6 @@ struct no
 {
   Registro Registro;
   struct no *prox;
-  // int info;
 };
 typedef struct no *Lista;
 
@@ -26,6 +26,7 @@ Lista cria_lista()
   if (cab != NULL)
   {
     cab->prox = NULL;
+    cab->Registro.info = 0;
     // cab->info = 0;
   }
   return cab;
@@ -67,25 +68,33 @@ int insere_elemento(Lista *lst, char *nome, int volume, float preco)
   strcpy(N->Registro.nome, nome);
   N->prox = (*lst)->prox;
   (*lst)->prox = N;
+  (*lst)->Registro.info++;
   // (*lst)->info++;
   return 1;
 }
 
 int remove_ultimo(Lista *lst)
 {
-  if (lista_vazia(lst) == 1)
+  if (lista_vazia(*lst) == 1)
   {
     return 0; // falha
   }
   Lista aux = *lst;
+  int i = 0;
 
-  while (aux->prox != NULL)
+  while (i != ((*lst)->Registro.info - 1))
+  {
     aux = aux->prox;
+    i++;
+  }
   if (aux->prox == NULL)
+  {
     return 0;
+  }
   Lista aux2 = aux->prox;
   aux->prox = aux2->prox;
   free(aux2);
+  (*lst)->Registro.info--;
   return 1;
 }
 
@@ -97,6 +106,7 @@ void imprime_lista(Lista lst)
   }
   else
   {
+    lst = lst->prox;
     for (lst; lst != NULL; lst = lst->prox)
     {
       printf("\n%s", lst->Registro.nome);
