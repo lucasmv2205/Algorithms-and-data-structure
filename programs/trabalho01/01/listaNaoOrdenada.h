@@ -4,7 +4,7 @@ Lista *inicializa_lista();
 
 int lista_vazia(Lista *lst);
 
-int tamanho(Lista *lst, int *tam);
+int tamanho(Lista *lst);
 
 int lista_cheia(Lista *lst);
 
@@ -22,6 +22,6 @@ int obtem_valor_elemento(Lista *lst, int pos_elemento);
 
 void imprime_lista(Lista *lst);
 
-int menor_elemento(Lista *lst, int menor);
+int menor_elemento(Lista *lst);
 
 void libera_lista(Lista **lst);

@@ -17,7 +17,7 @@ void libera_lista(Lista **lst);
 
 void imprime_lista(Lista *lst);
 
-int tamanho(Lista *lst, int *tam);
+int tamanho(Lista *lst);
 
 int remove_impares(Lista *lst);
 
@@ -25,4 +25,4 @@ int concatena(Lista *lst1, Lista *lst2);
 
 int ordena_lista(Lista *lst);
 
-int menor_elemento(Lista *lst, int menor);
+int menor_elemento(Lista *lst);

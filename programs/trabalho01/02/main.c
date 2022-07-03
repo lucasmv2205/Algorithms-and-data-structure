@@ -21,16 +21,21 @@ int main()
       printf(" 6. Liberar lista\n");
       printf(" 7. Obter valor de um elemento\n");
       printf(" 8. Imprimir lista\n");
-      printf(" 9. SAIR\n");
+      printf(" 9. Remover impares\n");
+      printf(" 10. Menor elemento\n");
+      printf(" 11. Tamanho da lista\n");
+      printf(" 12. Ordena lista\n");
+      printf(" 13. Concatena\n");
+      printf(" 20. SAIR\n");
       printf(" Opcao: ");
       scanf("%d", &op);
-      if ((op < 1) || (op > 9))
+      if ((op < 1) || (op > 20))
       {
 
         printf("\n\n Opcao Invalida! Tente novamente...");
         system("CLS || clear");
       }
-    } while ((op < 1) || (op > 9));
+    } while ((op < 1) || (op > 20));
 
     switch (op)
     {
@@ -114,10 +119,62 @@ int main()
       imprime_lista(lst);
       break;
 
+    case 9:
+      printf("\n\n Remove impares");
+
+      int flag9 = remove_impares(lst);
+      if (flag9 == 1)
+      {
+        printf("\n Impares removido com sucesso");
+      }
+      if (flag9 == 0)
+      {
+        printf("\nFalha na remocao");
+      }
+      break;
+
+    case 10:
+      printf("\n\n Menor elemento");
+      int menor = menor_elemento(lst);
+      printf("\n Menor elemento: %d", menor);
+      break;
+
+    case 11:
+      printf("\n\n Tamano da lista");
+      int tamanho_lista = tamanho(lst);
+      printf("\n Tamanho lista: %d", tamanho_lista);
+      break;
+
+    case 12:
+      printf("\n\n Tamano da lista");
+      int flag12 = ordena_lista(lst);
+      if (flag12 == 1)
+      {
+        printf("\n Sucesso");
+      }
+      if (flag12 == 0)
+      {
+        printf("\nFalha");
+      }
+      break;
+
+    case 13:
+      printf("\n\n Concatena");
+      // int flag13 = concatena(lst);
+      // if (flag13 == 1)
+      // {
+      //   printf("\n Sucesso");
+      // }
+      // if (flag13 == 0)
+      // {
+      //   printf("\nFalha");
+      // }
+      break;
+
     default:
       printf("\n\n Pressione qualquer tecla para FINALIZAR...");
     }
-  } while (op != 9);
+  } while (op != 20);
 
   return 0;
 }
