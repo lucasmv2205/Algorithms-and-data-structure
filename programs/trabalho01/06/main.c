@@ -5,8 +5,9 @@
 
 int main()
 {
-    int op, elem, res, pos;
-    Lista lst;
+    int op, elem, res, pos, tam, elemento_repetido;
+    double med;
+    Lista lst, lst2;
     do
     {
         system("CLS || clear");
@@ -21,15 +22,19 @@ int main()
             printf(" 5. Imprimir lista\n");
             printf(" 6. Obter valor do elemento\n");
             printf(" 7. Liberar lista\n");
-            printf(" 8. SAIR\n");
+            printf(" 8. Tamanho da lista\n");
+            printf(" 9. media da lista\n");
+            printf(" 10. verificar 2 listas iguais\n");
+            printf(" 11. Remover todas ocorrencias de um mesmo elemento\n");
+            printf(" 20. SAIR\n");
             printf(" Opcao: ");
             scanf("%d", &op);
-            if ((op < 1) || (op > 9))
+            if ((op < 1) || (op > 20))
             {
                 printf("\n\n Opcao Invalida! Tente novamente...");
                 system("CLS || clear");
             }
-        } while ((op < 1) || (op > 9));
+        } while ((op < 1) || (op > 20));
 
         switch (op)
         {
@@ -86,10 +91,63 @@ int main()
 
             break;
 
+        case 8:
+            res = tamanho(lst, &tam);
+            if (res == 1)
+            {
+                printf("\ntamanho da lista eh: %d", tam);
+            }
+            else
+            {
+                printf("\nLista vazia ou nao existe");
+            }
+            break;
+
+        case 9:
+            res = media(lst, &med);
+            if (res == 1)
+            {
+                printf("\nmedia da lista eh: %.2lf", med);
+            }
+            else
+            {
+                printf("\nerro ao calcular a media, lista pode estar vazia ou nao existir");
+            }
+            break;
+
+        case 10:
+            lst2 = cria_lista();
+            int tam_lista;
+            int flag10;
+            printf("\nQual o tamanho da lista? ");
+            scanf("%d", &tam_lista);
+            for (int i = 0; i < tam_lista; i++)
+            {
+                printf("\nInforme o elemento %d: ", i + 1);
+                scanf("%d", &elem);
+                flag10 = insere_ord(&lst2, elem);
+            }
+            flag10 = igualdade(lst, lst2);
+            if (flag10 == 1)
+                printf("\nLISTAS IGUAIS");
+            else
+                printf("\nLISTAS DIFERENTES");
+            break;
+
+        case 11:
+            printf("\nQual o elemento: ");
+            scanf("%d", &elemento_repetido);
+            int flag11 = remove_todos(&lst, elemento_repetido);
+            if (flag11 == 1)
+                printf("\nSucesso");
+            else
+                printf("\nFalha");
+            break;
+
         default:
             printf("\n\n Pressione qualquer tecla para FINALIZAR...");
         }
-    } while (op != 8);
+    } while (op != 20);
 
     return 0;
 }

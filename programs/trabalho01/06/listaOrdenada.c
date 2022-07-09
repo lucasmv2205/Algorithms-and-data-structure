@@ -128,3 +128,63 @@ void imprime_lista(Lista lst)
         printf("%d ", lst->info);
     }
 }
+
+int tamanho(Lista lst, int *tam)
+{
+    int tam_aux = 0;
+    if (lista_vazia(lst))
+    {
+        return 0;
+    }
+    for (lst; lst != NULL; lst = lst->prox)
+    {
+        tam_aux++;
+    }
+    *tam = tam_aux;
+    return 1;
+}
+
+int media(Lista lst, double *med)
+{
+    int sum = 0;
+    int tam;
+    int flag_tam = tamanho(lst, &tam);
+    if (lista_vazia(lst))
+    {
+        return 0;
+    }
+    for (lst; lst != NULL; lst = lst->prox)
+    {
+        sum = sum + lst->info;
+    }
+    *med = (double)sum / tam;
+    return 1;
+}
+
+int igualdade(Lista lst1, Lista lst2)
+{
+    if (lst1 == NULL && lst2 == NULL)
+        return 1;
+
+    int tam1, tam2;
+    int flag_tam1 = tamanho(lst1, &tam1);
+    int flag_tam2 = tamanho(lst2, &tam2);
+    if (tam1 != tam2)
+        return 0;
+    else
+    {
+        for (lst1, lst2; lst1 != NULL, lst2 != NULL;
+             lst1 = lst1->prox, lst2 = lst2->prox)
+        {
+
+            if (lst1->info != lst2->info)
+                return 0;
+        }
+        return 1;
+    }
+}
+
+int remove_todos(Lista *lst, int elemento_repetido)
+{
+    return 1;
+}
