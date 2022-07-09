@@ -236,3 +236,18 @@ int remove_maior(Lista *lst, int maior_elemento)
     }
     return 1;
 }
+
+int get_mult_3(Lista lst1, Lista *lst2)
+{
+    int res;
+    for (lst1; lst1 != NULL; lst1 = lst1->prox)
+    {
+        if (lst1->info % 3 == 0)
+        {
+            res = insere_ord(lst2, lst1->info);
+            if (res == 0)
+                return 0;
+        }
+    }
+    return 1;
+}

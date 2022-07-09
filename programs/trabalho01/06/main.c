@@ -26,6 +26,7 @@ int main()
             printf(" 10. verificar 2 listas iguais\n");
             printf(" 11. Remover todas ocorrencias de um mesmo elemento\n");
             printf(" 12. Remover todas ocorrencias de do maior elemento\n");
+            printf(" 13. Multiplos de 3\n");
             printf(" 20. SAIR\n");
             printf(" Opcao: ");
             scanf("%d", &op);
@@ -152,6 +153,20 @@ int main()
                 printf("\nSucesso");
             else
                 printf("\nFalha");
+            break;
+
+        case 13:
+            lst2 = cria_lista();
+            res = get_mult_3(lst, &lst2);
+            if (res == 1)
+            {
+                printf("\nNUMEROS MULTIPLOS DE 3 DA LISTA:\n");
+                imprime_lista(lst2);
+            }
+            else
+            {
+                printf("\nFALHA");
+            }
             break;
 
         default:

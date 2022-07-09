@@ -12,3 +12,4 @@ int igualdade(Lista lst1, Lista lst2);
 int remove_todos(Lista *lst, int elemento_repetido);
 int maior(Lista lst, int *valor_maior);
 int remove_maior(Lista *lst, int maior_elemento);
+int get_mult_3(Lista lst, Lista *lst2);
