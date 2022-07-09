@@ -205,7 +205,6 @@ int remove_todos(Lista *lst, int elemento_repetido)
         {
             return 0;
         }
-        printf("\nRemoveu %d ocorrencia do elemento", i);
     }
     return 1;
 }
@@ -225,20 +224,11 @@ int maior(Lista lst, int *valor_maior)
     return 1;
 }
 
-int remove_maior(Lista *lst)
+int remove_maior(Lista *lst, int maior_elemento)
 {
-    printf("aqui");
     if (lista_vazia(lst) == 1)
         return 0;
-    int maior_elemento, flag_maior, flag_remove_todos;
-    printf("aqui2");
-    flag_maior = maior(lst, &maior_elemento);
-    printf("\nFLag maior: %d", flag_maior);
-    printf("\n maior: %d", maior_elemento);
-    if (flag_maior == 0)
-    {
-        return 0;
-    }
+    int flag_remove_todos, flag_maior;
     flag_remove_todos = remove_todos(lst, maior_elemento);
     if (flag_remove_todos == 0)
     {

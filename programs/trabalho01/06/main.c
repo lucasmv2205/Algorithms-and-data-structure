@@ -5,7 +5,7 @@
 
 int main()
 {
-    int op, elem, res, pos, tam, elemento_repetido;
+    int op, elem, res, pos, tam, elemento_repetido, maior_valor;
     double med;
     Lista lst, lst2;
     do
@@ -144,7 +144,10 @@ int main()
             break;
 
         case 12:
-            res = remove_maior(&lst);
+            res = maior(lst, &maior_valor);
+            if (res == 0)
+                printf("\nFalha ao encontrar maior elemento");
+            res = remove_maior(&lst, maior_valor);
             if (res == 1)
                 printf("\nSucesso");
             else
