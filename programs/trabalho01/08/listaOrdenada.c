@@ -118,8 +118,19 @@ void imprime_lista(Lista lst)
   printf("\n");
   for (lst; lst != NULL; lst = lst->prox)
   {
-    printf("%d*x^%d", lst->info.coef, lst->info.exp);
-    printf("\t+\t");
+    if (lst->info.exp == 0)
+    {
+      printf("%d", lst->info.coef);
+    }
+    else
+      printf("%d*x^%d", lst->info.coef, lst->info.exp);
+    if (lst->prox != NULL)
+    {
+      if (lst->prox->info.coef >= 0)
+        printf(" + ");
+      else
+        printf(" - ");
+    }
   }
   printf("\n");
 }
