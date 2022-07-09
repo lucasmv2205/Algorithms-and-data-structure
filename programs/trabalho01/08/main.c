@@ -5,8 +5,8 @@
 
 int main()
 {
-  int op, res, exp, coef, tam, tam_lista;
-  double med;
+  int op, res, exp, coef, tam, tam_lista, valor_x;
+  double med, resultado;
   Lista lst, lst2;
 
   do
@@ -15,13 +15,14 @@ int main()
     {
       printf(" --- LISTAS DINAMICAS ENCADEADAS --- \n\n");
       printf(" Escolha uma opcao\n");
-      printf(" 1. Criar lista\n");
+      printf(" 1. Inicializar polinomio\n");
       printf(" 2. Verificar lista vazia\n");
       printf(" 3. Inserir elemento\n");
       printf(" 4. Excluir elemento\n");
       printf(" 5. Imprimir lista\n");
       printf(" 6. Obter tamanho da lista\n");
-      printf(" 12. Liberar lista\n");
+      printf(" 7. Reinicializar polinomio\n");
+      printf(" 8. Calcular valor do polinomio\n");
       printf(" 13. SAIR\n");
       printf(" Opcao: ");
       scanf("%d", &op);
@@ -35,7 +36,8 @@ int main()
     {
     case 1:
       lst = cria_lista();
-      printf("\n\n Lista criada com sucesso");
+      res = insere_ord(&lst, 0, 0);
+      printf("\n\n Polinomio criado com sucesso");
 
       break;
 
@@ -85,10 +87,32 @@ int main()
       break;
 
     case 7:
+      libera_lista(&lst);
+      lst = cria_lista();
+      res = insere_ord(&lst, 0, 0);
+      if (res == 1)
+      {
+        printf("\nPolinomio reinicializado");
+      }
+      else
+      {
+        printf("\nErro");
+      }
 
       break;
 
     case 8:
+      printf("\nQual o valor para X: ");
+      scanf("%d", &valor_x);
+      res = calcular_polinomio(lst, valor_x, &resultado);
+      if (res == 1)
+      {
+        printf("\nResultado: %.2lf", resultado);
+      }
+      else
+      {
+        printf("\nErro");
+      }
 
       break;
 
@@ -101,11 +125,6 @@ int main()
       break;
 
     case 11:
-
-      break;
-
-    case 12:
-      libera_lista(&lst);
 
       break;
 

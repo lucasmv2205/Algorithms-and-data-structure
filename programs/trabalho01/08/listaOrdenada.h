@@ -12,4 +12,6 @@ int tamanho(Lista lst);
 
 void imprime_lista(Lista lst);
 
+int calcular_polinomio(Lista lst, int valor_x, double *resultado);
+
 void libera_lista(Lista *lst);

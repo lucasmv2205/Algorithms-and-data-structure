@@ -98,23 +98,43 @@ int tamanho(Lista lst)
   return tam;
 }
 
+int calcular_polinomio(Lista lst, int valor_x, double *resultado)
+{
+  if (lst == NULL)
+  {
+    return 0;
+  }
+  double sum = 0;
+  for (lst; lst != NULL; lst = lst->prox)
+  {
+    sum += pow(valor_x, lst->info.exp) * lst->info.coef;
+  }
+  *resultado = sum;
+  return 1;
+}
+
 void imprime_lista(Lista lst)
 {
   printf("\n");
   for (lst; lst != NULL; lst = lst->prox)
   {
-    printf("%d^%d", lst->info.coef, lst->info.exp);
-    printf("\t");
+    printf("%d*x^%d", lst->info.coef, lst->info.exp);
+    printf("\t+\t");
   }
   printf("\n");
 }
 
 void libera_lista(Lista *lst)
 {
-  for (*lst; *lst != NULL; *lst = (*lst)->prox)
-  {
-    free(*lst);
+  Lista aux = (*lst);
+  Lista aux2;
+
+  while (aux->prox != NULL)
+  { // percorrendo a lista
+    aux2 = aux;
+    aux = aux->prox;
+    free(aux2);
   }
+  free(aux); // liberando o ultimo no
   *lst = NULL;
-  printf("\nLISTA LIBERADA");
 }
