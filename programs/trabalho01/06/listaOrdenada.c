@@ -186,5 +186,63 @@ int igualdade(Lista lst1, Lista lst2)
 
 int remove_todos(Lista *lst, int elemento_repetido)
 {
+    if (lista_vazia(*lst) == 1)
+        printf("Lista vazia!");
+    int flag_remove, cont = 0;
+    Lista aux = *lst;
+    for (aux; aux != NULL; aux = aux->prox)
+    {
+        if (aux->info == elemento_repetido)
+        {
+            cont++;
+        }
+    }
+    printf("\nO elemento %d aparece %d vezes", elemento_repetido, cont);
+    for (int i = 0; i < cont; i++)
+    {
+        flag_remove = remove_ord(lst, elemento_repetido);
+        if (flag_remove == 0)
+        {
+            return 0;
+        }
+        printf("\nRemoveu %d ocorrencia do elemento", i);
+    }
+    return 1;
+}
+
+int maior(Lista lst, int *valor_maior)
+{
+    if (lista_vazia(lst) == 1)
+        return 0;
+
+    int aux_maior = lst->info;
+    for (lst; lst != NULL; lst = lst->prox)
+    {
+        if (lst->info > aux_maior)
+            aux_maior = lst->info;
+    }
+    *valor_maior = aux_maior;
+    return 1;
+}
+
+int remove_maior(Lista *lst)
+{
+    printf("aqui");
+    if (lista_vazia(lst) == 1)
+        return 0;
+    int maior_elemento, flag_maior, flag_remove_todos;
+    printf("aqui2");
+    flag_maior = maior(lst, &maior_elemento);
+    printf("\nFLag maior: %d", flag_maior);
+    printf("\n maior: %d", maior_elemento);
+    if (flag_maior == 0)
+    {
+        return 0;
+    }
+    flag_remove_todos = remove_todos(lst, maior_elemento);
+    if (flag_remove_todos == 0)
+    {
+        return 0;
+    }
     return 1;
 }

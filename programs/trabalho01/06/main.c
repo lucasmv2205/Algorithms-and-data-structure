@@ -10,7 +10,6 @@ int main()
     Lista lst, lst2;
     do
     {
-        system("CLS || clear");
         do
         {
             printf(" --- LISTAS DINAMICAS DUPLAMENTE ENCADEADAS --- \n\n");
@@ -26,13 +25,13 @@ int main()
             printf(" 9. media da lista\n");
             printf(" 10. verificar 2 listas iguais\n");
             printf(" 11. Remover todas ocorrencias de um mesmo elemento\n");
+            printf(" 12. Remover todas ocorrencias de do maior elemento\n");
             printf(" 20. SAIR\n");
             printf(" Opcao: ");
             scanf("%d", &op);
             if ((op < 1) || (op > 20))
             {
                 printf("\n\n Opcao Invalida! Tente novamente...");
-                system("CLS || clear");
             }
         } while ((op < 1) || (op > 20));
 
@@ -139,6 +138,14 @@ int main()
             scanf("%d", &elemento_repetido);
             int flag11 = remove_todos(&lst, elemento_repetido);
             if (flag11 == 1)
+                printf("\nSucesso");
+            else
+                printf("\nFalha");
+            break;
+
+        case 12:
+            res = remove_maior(&lst);
+            if (res == 1)
                 printf("\nSucesso");
             else
                 printf("\nFalha");
