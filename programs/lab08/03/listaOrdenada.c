@@ -128,3 +128,19 @@ void imprime_lista(Lista lst)
         printf("%d ", lst->info);
     }
 }
+
+void libera_lista(Lista *lst)
+{
+    Lista aux = *lst;
+    Lista aux2;
+
+    while (aux != NULL)
+    {
+        aux2 = aux;
+        aux = aux->prox;
+        free(aux2);
+    }
+    free(aux);
+    *lst = NULL;
+    printf("\nLista liberada");
+}

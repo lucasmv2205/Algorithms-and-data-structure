@@ -83,7 +83,7 @@ int main()
             break;
 
         case 7:
-
+            libera_lista(&lst);
             break;
 
         default:
