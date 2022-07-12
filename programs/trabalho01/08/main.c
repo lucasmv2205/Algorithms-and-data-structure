@@ -13,7 +13,7 @@ int main()
   {
     do
     {
-      printf(" --- LISTAS DINAMICAS ENCADEADAS --- \n\n");
+      printf("\n --- POLINOMIOS --- \n\n");
       printf(" Escolha uma opcao\n");
       printf(" 1. Inicializar polinomio\n");
       printf(" 2. Verificar lista vazia\n");
@@ -113,18 +113,6 @@ int main()
       {
         printf("\nErro");
       }
-
-      break;
-
-    case 9:
-
-      break;
-
-    case 10:
-
-      break;
-
-    case 11:
 
       break;
 
